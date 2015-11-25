@@ -20,8 +20,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void mudarActivity(View view){
+    public void iniciarCorrida(View view){
         Intent intent = new Intent(MainActivity.this, IniciarCorrida.class);
+        startActivity(intent);
+    }
+
+    public void mostrarCorridas(View view)    {
+        Intent intent = new Intent(MainActivity.this, MostraCorridas.class);
         startActivity(intent);
     }
 

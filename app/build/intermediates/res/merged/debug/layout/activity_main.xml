@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:text="Iniciar Corrida"
         android:id="@+id/iniciarCorrida"
-        android:onClick="mudarActivity"
+        android:onClick="iniciarCorrida"
         android:layout_gravity="center_horizontal" />
 
     <Button
@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:text="Visualizar Corridas"
         android:id="@+id/visualizarCorridas"
+        android:onClick="mostrarCorridas"
         android:layout_gravity="center_horizontal" />
 
     <Button

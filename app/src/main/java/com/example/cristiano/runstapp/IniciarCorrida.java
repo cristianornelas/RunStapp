@@ -3,20 +3,19 @@ package com.example.cristiano.runstapp;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -25,7 +24,18 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class IniciarCorrida extends Activity implements LocationListener {
 
@@ -120,12 +130,10 @@ public class IniciarCorrida extends Activity implements LocationListener {
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
         TextView lat = (TextView) findViewById(R.id.latitude);
-        TextView lon = (TextView) findViewById(R.id.longitude);
         TextView dis = (TextView) findViewById(R.id.distancia);
         TextView vel = (TextView) findViewById(R.id.velocidade);
 
         lat.setText(String.valueOf(latitude));
-        lon.setText(String.valueOf(longitude));
         dis.setText(String.valueOf(distanciaAcumulada) + " Metros");
         vel.setText(String.valueOf(location.getSpeed()) + " m/s");
 
@@ -150,6 +158,35 @@ public class IniciarCorrida extends Activity implements LocationListener {
         }
 
         linha = googleMap.addPolyline(opcoes);
+
+    }
+
+    public void voltaTelaInicial(View view){
+        Intent intent = new Intent(IniciarCorrida.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void salvaCorrida(View view) throws IOException {
+        Intent intent = new Intent(IniciarCorrida.this, MainActivity.class);
+        Date date = new Date(System.currentTimeMillis());
+
+        String fileName = "*" + date.toString();
+        Toast.makeText(getApplicationContext(), fileName, Toast.LENGTH_LONG).show();
+
+        fileName.concat(fileName);
+
+        FileOutputStream fos = openFileOutput(fileName, Context.MODE_PRIVATE);
+
+
+        JSONArray jsonPontos =  new JSONArray(pontos);
+        JSONArray jsonVelocidades = new JSONArray(velocidades);
+
+        fos.write(jsonPontos.toString().getBytes());
+        fos.write(jsonVelocidades.toString().getBytes());
+
+        fos.close();
+
+        startActivity(intent);
 
     }
 

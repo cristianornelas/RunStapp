@@ -164,10 +164,6 @@
         "source": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_dialog_title_material.xml"
     },
     {
-        "merged": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/res/merged/debug/layout/content_main.xml",
-        "source": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/src/main/res/layout/content_main.xml"
-    },
-    {
         "merged": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
         "source": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/select_dialog_item_material.xml"
     },
@@ -186,6 +182,10 @@
     {
         "merged": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/res/merged/debug/layout/notification_template_lines.xml",
         "source": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_template_lines.xml"
+    },
+    {
+        "merged": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/res/merged/debug/layout/activity_mostra_corridas.xml",
+        "source": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/src/main/res/layout/activity_mostra_corridas.xml"
     },
     {
         "merged": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
