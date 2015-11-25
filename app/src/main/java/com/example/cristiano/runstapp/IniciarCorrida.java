@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -21,6 +22,10 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
+
+import java.util.ArrayList;
 
 public class IniciarCorrida extends Activity implements LocationListener {
 
@@ -32,14 +37,24 @@ public class IniciarCorrida extends Activity implements LocationListener {
     Location location;
     double latitude = 0.0;
     double longitude = 0.0;
+    double lastLatitude = 0.0;
+    double lastLongitude = 0.0;
+    float distanciaAcumulada = 0;
+    private ArrayList<LatLng> pontos;
+    private ArrayList<Float> velocidades;
+    private Polyline linha;
     private boolean canGetLocation = false;
-
+    float [] resultados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_iniciar_corrida);
+
+        pontos = new ArrayList<LatLng>();
+        velocidades = new ArrayList<Float>();
+        resultados = new float[3];
 
         if (googleMap == null)
             googleMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
@@ -73,6 +88,8 @@ public class IniciarCorrida extends Activity implements LocationListener {
 
         latitude = location.getLatitude();
         longitude = location.getLongitude();
+        lastLatitude = latitude;
+        lastLongitude = longitude;
 
         CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude, longitude)).zoom(ALTITUDE).build();
 
@@ -88,18 +105,51 @@ public class IniciarCorrida extends Activity implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
 
+        lastLatitude = latitude;
+        lastLongitude = longitude;
+
         latitude = location.getLatitude();
         longitude = location.getLongitude();
+
+
+        location.distanceBetween(lastLatitude, lastLongitude, latitude, longitude, resultados);
+        distanciaAcumulada += resultados[0];
+
 
         CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude, longitude)).zoom(ALTITUDE).build();
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
         TextView lat = (TextView) findViewById(R.id.latitude);
         TextView lon = (TextView) findViewById(R.id.longitude);
+        TextView dis = (TextView) findViewById(R.id.distancia);
+        TextView vel = (TextView) findViewById(R.id.velocidade);
 
         lat.setText(String.valueOf(latitude));
         lon.setText(String.valueOf(longitude));
+        dis.setText(String.valueOf(distanciaAcumulada));
+        vel.setText(String.valueOf(location.getSpeed()));
 
+        LatLng latLng = new LatLng(latitude,longitude);
+
+        pontos.add(latLng);
+        velocidades.add(location.getSpeed());
+
+        redesenhaLinha();
+    }
+
+    private void redesenhaLinha(){
+
+        googleMap.clear();
+
+        PolylineOptions opcoes = new PolylineOptions().width(5).color(Color.BLUE).geodesic(true);
+
+        for (int i=0 ; i< pontos.size(); i++)
+        {
+            LatLng ponto = pontos.get(i);
+            opcoes.add(ponto);
+        }
+
+        linha = googleMap.addPolyline(opcoes);
 
     }
 

@@ -45,4 +45,22 @@
         android:layout_alignRight="@+id/mapLayout"
         android:layout_alignEnd="@+id/mapLayout" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Distancia"
+        android:id="@+id/distancia"
+        android:layout_below="@+id/latitude"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Velocidade"
+        android:id="@+id/velocidade"
+        android:layout_below="@+id/distancia"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
