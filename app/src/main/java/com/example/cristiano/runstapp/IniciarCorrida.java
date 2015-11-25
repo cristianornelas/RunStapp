@@ -126,8 +126,8 @@ public class IniciarCorrida extends Activity implements LocationListener {
 
         lat.setText(String.valueOf(latitude));
         lon.setText(String.valueOf(longitude));
-        dis.setText(String.valueOf(distanciaAcumulada));
-        vel.setText(String.valueOf(location.getSpeed()));
+        dis.setText(String.valueOf(distanciaAcumulada) + " Metros");
+        vel.setText(String.valueOf(location.getSpeed()) + " m/s");
 
         LatLng latLng = new LatLng(latitude,longitude);
 
