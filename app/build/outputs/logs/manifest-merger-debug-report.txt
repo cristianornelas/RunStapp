@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/cristiano/AndroidStudioProjects/RunStapp2/app/src/main/AndroidManifest.xml:2:1-52:12
+ADDED from /home/cristiano/AndroidStudioProjects/RunStapp2/app/src/main/AndroidManifest.xml:2:1-53:12
 	xmlns:android
 		ADDED from /home/cristiano/AndroidStudioProjects/RunStapp2/app/src/main/AndroidManifest.xml:2:11-69
 	package
@@ -58,7 +58,7 @@ ADDED from /home/cristiano/AndroidStudioProjects/RunStapp2/app/src/main/AndroidM
 	android:name
 		ADDED from /home/cristiano/AndroidStudioProjects/RunStapp2/app/src/main/AndroidManifest.xml:18:22-76
 application
-ADDED from /home/cristiano/AndroidStudioProjects/RunStapp2/app/src/main/AndroidManifest.xml:20:5-50:19
+ADDED from /home/cristiano/AndroidStudioProjects/RunStapp2/app/src/main/AndroidManifest.xml:20:5-51:19
 MERGED from [com.android.support:appcompat-v7:23.1.1] /home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.1.1] /home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:23.1.1] /home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/AndroidManifest.xml:22:5-20
@@ -199,9 +199,13 @@ ADDED from /home/cristiano/AndroidStudioProjects/RunStapp2/app/src/main/AndroidM
 	android:value
 		ADDED from /home/cristiano/AndroidStudioProjects/RunStapp2/app/src/main/AndroidManifest.xml:47:13-52
 activity#com.example.cristiano.runstapp.MostraCorridas
-ADDED from /home/cristiano/AndroidStudioProjects/RunStapp2/app/src/main/AndroidManifest.xml:49:9-61
+ADDED from /home/cristiano/AndroidStudioProjects/RunStapp2/app/src/main/AndroidManifest.xml:49:9-52
 	android:name
 		ADDED from /home/cristiano/AndroidStudioProjects/RunStapp2/app/src/main/AndroidManifest.xml:49:19-49
+activity#com.example.cristiano.runstapp.DadosCorrida
+ADDED from /home/cristiano/AndroidStudioProjects/RunStapp2/app/src/main/AndroidManifest.xml:50:9-59
+	android:name
+		ADDED from /home/cristiano/AndroidStudioProjects/RunStapp2/app/src/main/AndroidManifest.xml:50:19-47
 uses-sdk
 INJECTED from /home/cristiano/AndroidStudioProjects/RunStapp2/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.1.1] /home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43

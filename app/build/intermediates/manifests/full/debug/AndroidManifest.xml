@@ -61,6 +61,7 @@
             android:value="@string/google_maps_key" />
 
         <activity android:name="com.example.cristiano.runstapp.MostraCorridas" />
+        <activity android:name="com.example.cristiano.runstapp.DadosCorrida" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

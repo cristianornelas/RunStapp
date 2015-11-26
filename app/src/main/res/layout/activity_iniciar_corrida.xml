@@ -30,17 +30,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Latitude"
-                android:id="@+id/latitude" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Distancia"
                 android:id="@+id/distancia"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -53,27 +47,24 @@
                 android:layout_alignParentEnd="true" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Finalizar Corrida"
                 android:id="@+id/finalizaCorrida"
+                android:onClick="salvaCorrida"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_toRightOf="@+id/distancia"
-                android:layout_toEndOf="@+id/distancia"
-                android:onClick="salvaCorrida"/>
+                android:layout_alignRight="@+id/velocidade"
+                android:layout_alignEnd="@+id/velocidade" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Descartar Corrida"
                 android:id="@+id/descartaCorrida"
-                android:layout_alignTop="@+id/finalizaCorrida"
-                android:layout_toLeftOf="@+id/distancia"
+                android:onClick="voltaTelaInicial"
+                android:layout_above="@+id/finalizaCorrida"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:onClick="voltaTelaInicial"/>
+                android:layout_alignParentStart="true" />
 
         </RelativeLayout>
 

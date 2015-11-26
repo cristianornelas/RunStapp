@@ -13,7 +13,6 @@ import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -39,9 +38,9 @@ import java.util.Date;
 
 public class IniciarCorrida extends Activity implements LocationListener {
 
-    private static final long MIN_TIME_BW_UPDATES = 3000;
-    private static final float MIN_DISTANCE_CHANGE_FOR_UPDATES = 3;
-    private static final int ALTITUDE = 25;
+    private static final long MIN_TIME_BW_UPDATES = 1000;
+    private static final float MIN_DISTANCE_CHANGE_FOR_UPDATES = 1;
+    private static final int ALTITUDE = 20;
     GoogleMap googleMap;
     LocationManager lm;
     Location location;
@@ -52,6 +51,8 @@ public class IniciarCorrida extends Activity implements LocationListener {
     float distanciaAcumulada = 0;
     private ArrayList<LatLng> pontos;
     private ArrayList<Float> velocidades;
+    private ArrayList<Double> latitudes;
+    private ArrayList<Double> longitudes;
     private Polyline linha;
     private boolean canGetLocation = false;
     float [] resultados;
@@ -70,7 +71,7 @@ public class IniciarCorrida extends Activity implements LocationListener {
             googleMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 
         if (googleMap == null) {
-            Toast.makeText(getApplicationContext(), "Impossível carregar mapa.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "Impossível carregar mapa.", Toast.LENGTH_SHORT).show();
         } else {
             lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -82,9 +83,6 @@ public class IniciarCorrida extends Activity implements LocationListener {
 
             location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-            if (location == null) {
-                Toast.makeText(getApplicationContext(), "LastKnowLocation é null.", Toast.LENGTH_LONG).show();
-            }
             iniciaMapa();
         }
     }
@@ -129,11 +127,9 @@ public class IniciarCorrida extends Activity implements LocationListener {
         CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude, longitude)).zoom(ALTITUDE).build();
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-        TextView lat = (TextView) findViewById(R.id.latitude);
         TextView dis = (TextView) findViewById(R.id.distancia);
         TextView vel = (TextView) findViewById(R.id.velocidade);
 
-        lat.setText(String.valueOf(latitude));
         dis.setText(String.valueOf(distanciaAcumulada) + " Metros");
         vel.setText(String.valueOf(location.getSpeed()) + " m/s");
 
@@ -171,18 +167,27 @@ public class IniciarCorrida extends Activity implements LocationListener {
         Date date = new Date(System.currentTimeMillis());
 
         String fileName = "*" + date.toString();
-        Toast.makeText(getApplicationContext(), fileName, Toast.LENGTH_LONG).show();
 
         fileName.concat(fileName);
 
         FileOutputStream fos = openFileOutput(fileName, Context.MODE_PRIVATE);
 
+        latitudes = new ArrayList<Double>();
+        longitudes = new ArrayList<Double>();
 
-        JSONArray jsonPontos =  new JSONArray(pontos);
-        JSONArray jsonVelocidades = new JSONArray(velocidades);
+        for (int i=0; i < pontos.size(); i++)
+        {
+            latitudes.add(pontos.get(i).latitude);
+            longitudes.add(pontos.get(i).longitude);
+        }
 
-        fos.write(jsonPontos.toString().getBytes());
-        fos.write(jsonVelocidades.toString().getBytes());
+        fos.write(latitudes.toString().getBytes());
+        fos.write("=".getBytes());
+        fos.write(longitudes.toString().getBytes());
+        fos.write("=".getBytes());
+        fos.write(velocidades.toString().getBytes());
+        fos.write("=".getBytes());
+        fos.write(Float.toString(distanciaAcumulada).getBytes());
 
         fos.close();
 
