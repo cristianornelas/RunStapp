@@ -1,11 +1,28 @@
 package com.example.cristiano.runstapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.hardware.camera2.params.Face;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telecom.Call;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.share.ShareApi;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareButton;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -15,6 +32,8 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class DadosCorrida extends AppCompatActivity {
 
@@ -26,6 +45,10 @@ public class DadosCorrida extends AppCompatActivity {
     private static final float MIN_DISTANCE_CHANGE_FOR_UPDATES = 3;
     private static final int ALTITUDE = 18;
     float [] resultados;
+    ShareButton shareButton;
+    private CallbackManager callbackManager;
+    private LoginManager loginManager;
+    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +103,7 @@ public class DadosCorrida extends AppCompatActivity {
             googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             googleMap.getUiSettings().setZoomControlsEnabled(true);
             googleMap.getUiSettings().setZoomGesturesEnabled(true);
-            googleMap.setMyLocationEnabled(true);
+            //googleMap.setMyLocationEnabled(true);
             googleMap.getUiSettings().setCompassEnabled(true);
             googleMap.getUiSettings().setMyLocationButtonEnabled(true);
 
@@ -90,8 +113,61 @@ public class DadosCorrida extends AppCompatActivity {
             TextView dis = (TextView) findViewById(R.id.distancia_dados);
             dis.setText(aux[3] + " Metros");
 
+            List<String> permissoes = Arrays.asList("publish_actions");
+            loginManager = LoginManager.getInstance();
+            loginManager.logInWithPublishPermissions(this, permissoes);
+
+            //Cria um botao compartilhar
+            Button compartilhar = (Button) findViewById(R.id.facebookShare);
+            compartilhar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    View rootView = findViewById(R.id.map_dados).getRootView();
+                    rootView.setDrawingCacheEnabled(true);
+                    bitmap = rootView.getDrawingCache();
+
+                    FacebookSdk.sdkInitialize(getApplicationContext());
+                    callbackManager = CallbackManager.Factory.create();
+
+
+                    loginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+                        @Override
+                        public void onSuccess(LoginResult loginResult) {
+                            compartilhaFoto();
+                        }
+
+                        @Override
+                        public void onCancel() {
+
+                        }
+
+                        @Override
+                        public void onError(FacebookException error) {
+
+                        }
+                    });
+
+                }
+            });
+
+
+
         }
 
+    }
+
+    private void compartilhaFoto()
+    {
+        SharePhoto photo = new SharePhoto.Builder()
+                .setBitmap(bitmap)
+                .setCaption("BLA BLA BLA")
+                .build();
+
+        SharePhotoContent content = new SharePhotoContent.Builder()
+                .addPhoto(photo)
+                .build();
+
+        ShareApi.share(content, null);
     }
 
     private void redesenhaLinha(){

@@ -11,12 +11,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import com.facebook.FacebookSdk;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FacebookSdk.sdkInitialize(getApplicationContext());
 
     }
 
@@ -27,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void mostrarCorridas(View view)    {
         Intent intent = new Intent(MainActivity.this, MostraCorridas.class);
+        startActivity(intent);
+    }
+
+    public void configuracoes(View v)   {
+        Intent intent = new Intent(MainActivity.this, Configuracoes.class);
         startActivity(intent);
     }
 

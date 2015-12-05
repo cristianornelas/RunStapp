@@ -33,5 +33,6 @@
         android:layout_height="wrap_content"
         android:text="Configurações"
         android:id="@+id/configuracoes"
+        android:onClick="configuracoes"
         android:layout_gravity="center_horizontal" />
 </LinearLayout>

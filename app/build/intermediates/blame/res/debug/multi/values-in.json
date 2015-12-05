@@ -976,8 +976,27 @@
                     "startLine": 53,
                     "startColumn": 4,
                     "startOffset": 7089,
+                    "endColumn": 60,
+                    "endOffset": 7145
+                },
+                "from": {
+                    "file": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.6.0/res/values-in/values-in.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 178,
+                        "endColumn": 60,
+                        "endOffset": 234
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 54,
+                    "startColumn": 4,
+                    "startOffset": 7150,
                     "endColumn": 114,
-                    "endOffset": 7199
+                    "endOffset": 7260
                 },
                 "from": {
                     "file": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values-in/values-in.xml",
@@ -992,11 +1011,11 @@
             },
             {
                 "to": {
-                    "startLine": 54,
+                    "startLine": 55,
                     "startColumn": 4,
-                    "startOffset": 7204,
+                    "startOffset": 7265,
                     "endColumn": 112,
-                    "endOffset": 7312
+                    "endOffset": 7373
                 },
                 "from": {
                     "file": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values-in/values-in.xml",
@@ -1011,11 +1030,11 @@
             },
             {
                 "to": {
-                    "startLine": 55,
+                    "startLine": 56,
                     "startColumn": 4,
-                    "startOffset": 7317,
+                    "startOffset": 7378,
                     "endColumn": 110,
-                    "endOffset": 7423
+                    "endOffset": 7484
                 },
                 "from": {
                     "file": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values-in/values-in.xml",
@@ -1030,11 +1049,11 @@
             },
             {
                 "to": {
-                    "startLine": 56,
+                    "startLine": 57,
                     "startColumn": 4,
-                    "startOffset": 7428,
+                    "startOffset": 7489,
                     "endColumn": 112,
-                    "endOffset": 7536
+                    "endOffset": 7597
                 },
                 "from": {
                     "file": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values-in/values-in.xml",
@@ -1049,11 +1068,11 @@
             },
             {
                 "to": {
-                    "startLine": 57,
+                    "startLine": 58,
                     "startColumn": 4,
-                    "startOffset": 7541,
+                    "startOffset": 7602,
                     "endColumn": 85,
-                    "endOffset": 7622
+                    "endOffset": 7683
                 },
                 "from": {
                     "file": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values-in/values-in.xml",
@@ -1068,11 +1087,11 @@
             },
             {
                 "to": {
-                    "startLine": 58,
+                    "startLine": 59,
                     "startColumn": 4,
-                    "startOffset": 7627,
+                    "startOffset": 7688,
                     "endColumn": 95,
-                    "endOffset": 7718
+                    "endOffset": 7779
                 },
                 "from": {
                     "file": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values-in/values-in.xml",
@@ -1087,11 +1106,11 @@
             },
             {
                 "to": {
-                    "startLine": 59,
+                    "startLine": 60,
                     "startColumn": 4,
-                    "startOffset": 7723,
+                    "startOffset": 7784,
                     "endColumn": 100,
-                    "endOffset": 7819
+                    "endOffset": 7880
                 },
                 "from": {
                     "file": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-in/values-in.xml",
@@ -1106,11 +1125,11 @@
             },
             {
                 "to": {
-                    "startLine": 60,
+                    "startLine": 61,
                     "startColumn": 4,
-                    "startOffset": 7824,
+                    "startOffset": 7885,
                     "endColumn": 107,
-                    "endOffset": 7927
+                    "endOffset": 7988
                 },
                 "from": {
                     "file": "/home/cristiano/AndroidStudioProjects/RunStapp2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.3.0/res/values-in/wallet_strings.xml",
